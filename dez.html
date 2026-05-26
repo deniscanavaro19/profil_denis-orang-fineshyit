@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Denis Portfolio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#f7f7f7;
+      color:#222;
+      overflow-x:hidden;
+    }
+
+    /* ===== HERO ===== */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      flex-wrap:wrap;
+    }
+
+    .left{
+      flex:1;
+      min-width:300px;
+      background:#f3f3f3;
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:60px;
+      overflow:hidden;
+    }
+
+    .right{
+      flex:1;
+      min-width:300px;
+      background:linear-gradient(135deg,#ff3d7f,#ff6a00);
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:60px;
+      overflow:hidden;
+    }
+
+    /* decorative shapes */
+    .circle{
+      position:absolute;
+      border-radius:50%;
+      opacity:.2;
+      background:white;
+    }
+
+    .circle.one{
+      width:300px;
+      height:300px;
+      top:-100px;
+      left:-100px;
+    }
+
+    .circle.two{
+      width:200px;
+      height:200px;
+      bottom:-70px;
+      right:-50px;
+    }
+
+    .triangle{
+      width:0;
+      height:0;
+      border-left:40px solid transparent;
+      border-right:40px solid transparent;
+      border-bottom:70px solid rgba(255,255,255,0.2);
+      position:absolute;
+      top:80px;
+      right:120px;
+      transform:rotate(20deg);
+    }
+
+    .content{
+      max-width:550px;
+      z-index:2;
+    }
+
+    .small-title{
+      letter-spacing:4px;
+      color:#999;
+      margin-bottom:15px;
+      font-size:14px;
+    }
+
+    .name{
+      font-size:4rem;
+      line-height:1.1;
+      font-weight:700;
+      color:#111;
+      margin-bottom:20px;
+    }
+
+    .name span{
+      color:#ff5a3d;
+    }
+
+    .desc{
+      color:#666;
+      line-height:1.8;
+      margin-bottom:30px;
+    }
+
+    .btn-group{
+      display:flex;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 28px;
+      border:none;
+      border-radius:50px;
+      cursor:pointer;
+      font-weight:600;
+      transition:.3s;
+      text-decoration:none;
+      display:inline-block;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#ff5f6d,#ff9966);
+      color:white;
+      box-shadow:0 10px 20px rgba(255,90,90,.3);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-3px);
+    }
+
+    .btn-outline{
+      border:2px solid #ff6b5e;
+      color:#ff6b5e;
+      background:white;
+    }
+
+    .btn-outline:hover{
+      background:#ff6b5e;
+      color:white;
+    }
+
+    .profile-card{
+      width:100%;
+      max-width:420px;
+      background:rgba(255,255,255,0.12);
+      backdrop-filter:blur(10px);
+      border-radius:30px;
+      padding:40px;
+      color:white;
+      box-shadow:0 10px 40px rgba(0,0,0,.15);
+      position:relative;
+      z-index:2;
+    }
+
+    .profile-card h2{
+      font-size:2rem;
+      margin-bottom:10px;
+    }
+
+    .profile-card p{
+      line-height:1.8;
+      opacity:.95;
+    }
+
+    .info-list{
+      margin-top:25px;
+    }
+
+    .info-item{
+      display:flex;
+      align-items:flex-start;
+      gap:15px;
+      margin-bottom:18px;
+    }
+
+    .info-item i{
+      font-size:18px;
+      margin-top:5px;
+      color:#fff;
+    }
+
+    /* ===== SECTION ===== */
+    section{
+      padding:90px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:2.5rem;
+      color:#222;
+    }
+
+    .section-title p{
+      color:#777;
+      margin-top:10px;
+    }
+
+    /* cards */
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:white;
+      padding:35px;
+      border-radius:25px;
+      transition:.4s;
+      box-shadow:0 10px 25px rgba(0,0,0,.05);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+    }
+
+    .card::before{
+      content:'';
+      position:absolute;
+      width:100%;
+      height:6px;
+      top:0;
+      left:0;
+      background:linear-gradient(90deg,#ff3d7f,#ff8c42);
+    }
+
+    .card i{
+      font-size:40px;
+      margin-bottom:20px;
+      color:#ff5a5f;
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      color:#222;
+    }
+
+    .card p{
+      color:#666;
+      line-height:1.7;
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline{
+      position:relative;
+      max-width:900px;
+      margin:auto;
+    }
+
+    .timeline::before{
+      content:'';
+      position:absolute;
+      width:4px;
+      background:linear-gradient(#ff5f6d,#ff9966);
+      top:0;
+      bottom:0;
+      left:50%;
+      transform:translateX(-50%);
+    }
+
+    .timeline-item{
+      padding:20px 40px;
+      position:relative;
+      width:50%;
+    }
+
+    .timeline-item.left-side{
+      left:0;
+    }
+
+    .timeline-item.right-side{
+      left:50%;
+    }
+
+    .timeline-content{
+      background:white;
+      padding:25px;
+      border-radius:20px;
+      box-shadow:0 10px 25px rgba(0,0,0,.05);
+    }
+
+    .timeline-content h3{
+      color:#ff5a5f;
+      margin-bottom:10px;
+    }
+
+    .timeline-item::after{
+      content:'';
+      position:absolute;
+      width:20px;
+      height:20px;
+      background:#ff5a5f;
+      border-radius:50%;
+      top:35px;
+      right:-10px;
+    }
+
+    .timeline-item.right-side::after{
+      left:-10px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer{
+      background:#111;
+      color:white;
+      text-align:center;
+      padding:40px 20px;
+    }
+
+    .socials{
+      margin-top:20px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+    }
+
+    .socials a{
+      width:45px;
+      height:45px;
+      background:#222;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      color:white;
+      text-decoration:none;
+      transition:.3s;
+    }
+
+    .socials a:hover{
+      background:linear-gradient(135deg,#ff5f6d,#ff9966);
+      transform:translateY(-5px);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:900px){
+
+      .hero{
+        flex-direction:column;
+      }
+
+      .name{
+        font-size:3rem;
+      }
+
+      .timeline::before{
+        left:20px;
+      }
+
+      .timeline-item{
+        width:100%;
+        padding-left:60px;
+        padding-right:20px;
+        margin-bottom:30px;
+      }
+
+      .timeline-item.right-side{
+        left:0;
+      }
+
+      .timeline-item::after,
+      .timeline-item.right-side::after{
+        left:10px;
+      }
+    }
+
+    @media(max-width:600px){
+
+      .left,
+      .right{
+        padding:40px 25px;
+      }
+
+      .name{
+        font-size:2.4rem;
+      }
+
+      .section-title h2{
+        font-size:2rem;
+      }
+
+      .profile-card{
+        padding:30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+
+    <!-- LEFT -->
+    <div class="left">
+
+      <div class="circle one"></div>
+
+      <div class="content">
+        <p class="small-title">PERSONAL PROFILE</p>
+
+        <h1 class="name">
+          Denis <span>Krispino</span>
+        </h1>
+
+        <p class="desc">
+          Halo! Saya Denis Krispino Canavaro Luan, seorang pelajar yang memiliki minat besar dalam dunia teknologi, kreativitas, dan pengembangan diri. Saya menyukai video editing, membaca artikel, serta aktif dalam olahraga badminton.
+        </p>
+
+        <div class="btn-group">
+          <a href="#about" class="btn btn-primary">
+            Tentang Saya
+          </a>
+
+          <a href="#education" class="btn btn-outline">
+            Riwayat Pendidikan
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+
+      <div class="circle two"></div>
+      <div class="triangle"></div>
+
+      <div class="profile-card">
+
+        <h2>Profil Singkat</h2>
+
+        <p>
+          Creative Student • Video Editor • Sport Enthusiast
+        </p>
+
+        <div class="info-list">
+
+          <div class="info-item">
+            <i class="fa-solid fa-user"></i>
+            <div>
+              <strong>Nama Lengkap</strong><br>
+              Denis Krispino Canavaro Luan
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <strong>TTL</strong><br>
+              Atambua, 19 Mei 2008
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class="fa-solid fa-book-open"></i>
+            <div>
+              <strong>Hobi Akademik</strong><br>
+              Membaca Artikel
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class="fa-solid fa-table-tennis-paddle-ball"></i>
+            <div>
+              <strong>Hobi Non Akademik</strong><br>
+              Badminton
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class="fa-solid fa-video"></i>
+            <div>
+              <strong>Keahlian</strong><br>
+              Video Editing
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+
+    <div class="section-title">
+      <h2>Tentang Saya</h2>
+      <p>Beberapa informasi penting tentang diri saya</p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <i class="fa-solid fa-lightbulb"></i>
+        <h3>Kreatif</h3>
+        <p>
+          Saya memiliki ketertarikan besar pada desain visual dan editing video dengan gaya modern serta estetik.
+        </p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-laptop-code"></i>
+        <h3>Teknologi</h3>
+        <p>
+          Saya suka mempelajari dunia teknologi dan perkembangan digital yang terus berkembang.
+        </p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-medal"></i>
+        <h3>Aktif</h3>
+        <p>
+          Selain akademik, saya aktif bermain badminton untuk menjaga kesehatan dan semangat.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+
+    <div class="section-title">
+      <h2>Riwayat Pendidikan</h2>
+      <p>Perjalanan pendidikan saya</p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item left-side">
+        <div class="timeline-content">
+          <h3>SDI TALA</h3>
+          <p>Pendidikan dasar yang membentuk karakter dan dasar pembelajaran saya.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item right-side">
+        <div class="timeline-content">
+          <h3>SMPK DON BOSCCO ATAMBUA</h3>
+          <p>Mengembangkan kemampuan akademik dan keterampilan sosial.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item left-side">
+        <div class="timeline-content">
+          <h3>SMAK SURIA ATAMBUA</h3>
+          <p>Fokus pada pengembangan diri, kreativitas, dan keterampilan teknologi.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section>
+
+    <div class="section-title">
+      <h2>Pengalaman & Skill</h2>
+      <p>Kemampuan dan pengalaman saya</p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <i class="fa-solid fa-people-group"></i>
+        <h3>Riwayat Kerja</h3>
+        <p>
+          Memiliki pengalaman dalam kerja kelompok dan kolaborasi tim untuk menyelesaikan berbagai tugas.
+        </p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-film"></i>
+        <h3>Video Editing</h3>
+        <p>
+          Menguasai editing video dengan konsep modern, cinematic, dan social media content.
+        </p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-brain"></i>
+        <h3>Pengembangan Diri</h3>
+        <p>
+          Selalu belajar hal baru dan meningkatkan kemampuan untuk menjadi pribadi yang lebih baik.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+
+    <h2>Denis Portfolio</h2>
+
+    <p>
+      Terima kasih telah mengunjungi website personal profile saya.
+    </p>
+
+    <div class="socials">
+
+      <a href="#">
+        <i class="fab fa-instagram"></i>
+      </a>
+
+      <a href="#">
+        <i class="fab fa-tiktok"></i>
+      </a>
+
+      <a href="#">
+        <i class="fab fa-youtube"></i>
+      </a>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
